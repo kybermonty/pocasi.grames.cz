@@ -1,5 +1,5 @@
-import * as Moment from 'moment';
-import * as React from 'react';
+import Moment from 'moment';
+import React from 'react';
 import Sockette from 'sockette';
 
 import { TableDoubleRow } from "./components/Table/doubleRow";
@@ -26,16 +26,20 @@ interface IWeather {
   updated: string;
 }
 interface IState {
-  ws: any;
-  weather: IWeather;
-};
+  ws: Sockette | null;
+  weather: IWeather | null;
+}
 
-class App extends React.Component<any, IState> {
-  constructor(props) {
+class App extends React.Component<object, IState> {
+  constructor(props: object) {
     super(props);
+    this.state = {
+      ws: null,
+      weather: null
+    };
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     this.setState({
       ws: new Sockette('wss://pocasi.grames.cz/wss', {
         onmessage: e => { this.updateData(e.data); },
@@ -43,17 +47,17 @@ class App extends React.Component<any, IState> {
     })
   }
 
-  public updateData(data) {
-    data = JSON.parse(data);
-    data.updated = Moment(data.updated).format('D.M.YYYY H:mm:ss');
+  public updateData(data: string) {
+    const parsed = JSON.parse(data);
+    parsed.updated = Moment(parsed.updated).format('D.M.YYYY H:mm:ss');
     this.setState({
-      weather: data
+      weather: parsed
     });
   }
 
   public render() {
     if (!this.state.weather) {
-      return 'Načítám data o počasí...';
+      return <div>Načítám data o počasí...</div>;
     }
     return (
       <table>
