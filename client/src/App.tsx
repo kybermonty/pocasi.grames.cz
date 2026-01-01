@@ -93,18 +93,18 @@ class App extends React.Component<any, IState> {
             icon={QUALITY_ICON}
             value={this.state.weather.quality}
           />
-          <TableRow
+          <TableDoubleRow
             title="Výstraha"
             icon={WARNING_ICON}
             value={this.state.weather.warning}
           />
           <TableDoubleRow
-            title="Před­pověď - dnes"
+            title="Předpověď - dnes"
             icon={FORECAST_TODAY_ICON}
             value={this.state.weather.forecastToday}
           />
           <TableDoubleRow
-            title="Před­pověď - zítra"
+            title="Předpověď - zítra"
             icon={FORECAST_TOMORROW_ICON}
             value={this.state.weather.forecastTomorrow}
           />
