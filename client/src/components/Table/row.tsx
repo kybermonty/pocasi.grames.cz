@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 interface ITableRow {
   value: string;
@@ -6,7 +6,7 @@ interface ITableRow {
   icon: string;
 }
 
-export const TableRow: React.SFC<ITableRow> = ({value, title, icon}) => (
+export const TableRow: React.FC<ITableRow> = ({value, title, icon}) => (
   <tr>
     <td style={{ width: "40px" }}>
       <svg className="icon" viewBox="0 0 24 24">

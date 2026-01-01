@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 interface ITableDoubleRow {
   value: string;
@@ -6,8 +6,8 @@ interface ITableDoubleRow {
   icon: string;
 }
 
-export const TableDoubleRow: React.SFC<ITableDoubleRow> = ({value, title, icon}) => (
-  <React.Fragment>
+export const TableDoubleRow: React.FC<ITableDoubleRow> = ({value, title, icon}) => (
+  <>
     <tr>
       <td>
         <svg className="icon" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@ export const TableDoubleRow: React.SFC<ITableDoubleRow> = ({value, title, icon})
     <tr>
       <td colSpan={3}>{value || '-'}</td>
     </tr>
-  </React.Fragment>
+  </>
 );
 
 export default TableDoubleRow;
